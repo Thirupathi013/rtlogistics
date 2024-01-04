@@ -1,0 +1,10 @@
+input[type="text"]:focus, textarea:focus,select:focus {
+
+  background-color : #ffff00;
+
+}
+input[type="text"], textarea,select {
+
+  border : 1px solid #000 !important;
+
+}
