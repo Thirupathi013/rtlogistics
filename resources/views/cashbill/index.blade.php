@@ -70,13 +70,17 @@
                                         </td>
 
                                         <td class="text-center">
+                                            <a class="btn btn-primary m-1" data-toggle="tooltip" data-placement="top" title="Print Cash bill"  href="{{ route('cashbill.generatepdf', $cashbill->id) }}">
+                                                 Print
+                                            </a>
                                             @can('destroy-cashbill')
                                             {!! Form::open(['route' => ['cashbill.destroy', $cashbill],'method' => 'delete',  'class'=>'d-inline-block dform']) !!}
                                             @endcan
                                             @can('view-cashbill')
-                                            <a class="btn btn-primary btn-sm m-1" data-toggle="tooltip" data-placement="top" title="View and edit post details" href="{{route('cashbill.show', $cashbill)}}">
+                                            {{-- <a class="btn btn-primary btn-sm m-1" data-toggle="tooltip" data-placement="top" title="View and edit post details" href="{{route('cashbill.show', $cashbill)}}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i> View
-                                            </a>
+                                            </a> --}}
+
                                             @endcan
                                             @can('update-cashbill')
                                             <a class="btn btn-info btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Edit post details" href="{{route('cashbill.edit',$cashbill)}}">

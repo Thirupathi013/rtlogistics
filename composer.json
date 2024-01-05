@@ -20,6 +20,7 @@
         "laravelcollective/html": "^6.1",
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-permission": "^3.13",
+        "tecnickcom/tcpdf": "^6.6",
         "unisharp/laravel-filemanager": "^2.1"
     },
     "require-dev": {

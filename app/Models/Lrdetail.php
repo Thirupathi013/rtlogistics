@@ -30,6 +30,7 @@ class Lrdetail extends Model
         'topay_value',
         'status',
         'created_by',
+        'md_id'
 
 
     ];
@@ -51,6 +52,10 @@ class Lrdetail extends Model
     }
     public function partydetail() {
         return $this->belongsTo('App\Models\Partydetail','consignee_id');
+    }
+    public function motordetail()
+    {
+        return $this->belongsTo('App\Models\Motordetail','md_id');
     }
 
 }

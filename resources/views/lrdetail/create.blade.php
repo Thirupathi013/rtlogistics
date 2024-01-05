@@ -7,14 +7,17 @@
         <div class="col-md-12">
             <div class="card mb-5">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'lrdetail.store', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'lrdetail.store', 'files' => true,'id'=>'myForm',]) !!}
+                    {{-- <input type="hidden" name="md_id" value="{{ app('request')->input('motorid') }}" /> --}}
+                    {{ Form::hidden('md_id',  app('request')->input('motorid') ) }}
+
                     <h6 class="heading-small text-muted mb-4">LR information</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         {{ Form::label('truck_number', 'Enter Truck Number', ['class' => 'form-control-label']) }}
-                                        {{ Form::text('truck_number', null, ['class' => 'form-control']) }}
+                                        {{ Form::text('truck_number', null, ['class' => 'form-control','autofocus'=>true]) }}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -45,7 +48,7 @@
                                     <div class="form-group">
                                         {{ Form::label('booking_station_id', 'Booking Station', ['class' => 'form-control-label']) }}
                                         {{-- {{ Form::text('booking_station_id', null, ['class' => 'form-control']) }} --}}
-                                        {!! Form::select('booking_station_id', $bookingstations, null, ['class' => 'form-control select2']) !!}
+                                        {!! Form::select('booking_station_id', $bookingstations, null, ['class' => 'form-control ']) !!}
                                     </div>
                                 </div>
 
@@ -53,7 +56,7 @@
                                     <div class="form-group">
                                         {{ Form::label('destination_id', 'Destination', ['class' => 'form-control-label']) }}
                                         {{-- {{ Form::text('destination_id', null, ['class' => 'form-control']) }} --}}
-                                        {!! Form::select('destination_id', $destinations, null, ['class' => 'form-control select2']) !!}
+                                        {!! Form::select('destination_id', $destinations, null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -66,14 +69,14 @@
                                     <div class="form-group">
                                         {{ Form::label('description_id', 'Description', ['class' => 'form-control-label']) }}
                                         {{-- {{ Form::text('description_id', null, ['class' => 'form-control']) }} --}}
-                                        {!! Form::select('description_id', $descriptions, null, ['class' => 'form-control select2']) !!}
+                                        {!! Form::select('description_id', $descriptions, null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         {{ Form::label('consignee_id', 'Select Consignee', ['class' => 'form-control-label']) }}
                                         {{-- {{ Form::text('consignee_id', null, ['class' => 'form-control']) }} --}}
-                                        {!! Form::select('consignee_id', $partydetails, null, ['class' => 'form-control select2']) !!}
+                                        {!! Form::select('consignee_id', $partydetails, null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -92,7 +95,7 @@
                                     <div class="form-group">
                                         {{ Form::label('lr_pay_status', 'Enter Pay Ind', ['class' => 'form-control-label']) }}
                                         {{-- {{ Form::text('lr_pay_status', null, ['class' => 'form-control']) }} --}}
-                                        {!! Form::select('lr_pay_status', $partypaymenttype, null, ['class' => 'form-control select2']) !!}
+                                        {!! Form::select('lr_pay_status', $partypaymenttype, null, ['class' => 'form-control']) !!}
 
                                     </div>
                                 </div>

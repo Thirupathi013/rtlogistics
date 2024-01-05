@@ -37,6 +37,7 @@
                                     <th scope="col" class="text-white">Destination</th>
                                     <th scope="col" class="text-white">Truck Number</th>
                                     <th scope="col" class="text-white">Lorry Hire</th>
+                                    <th scope="col" class="text-white">Total Lrs</th>
 
                                     <th scope="col" class="text-white">Status </th>
 
@@ -86,6 +87,16 @@
                                                 {{$motordetail->lorry_hire }}
                                             </div>
                                         </td>
+                                        <td scope="row">
+                                            <div class="mx-w-440 d-flex flex-wrap">
+                                               {{$motordetail->total_lr }}
+                                                {{-- <a class="btn btn-info btn-sm m-1" data-toggle="tooltip" data-placement="top" title="Enter Lr details" href="{{route('lrdetail.create',$motordetail)}}">
+                                                    <i class="fa fa-edit" aria-hidden="true"></i> Add Lr Detaila
+                                                </a> --}}
+
+
+                                            </div>
+                                        </td>
 
 
                                         <td>
@@ -97,6 +108,15 @@
                                         </td>
 
                                         <td class="text-center">
+                                            {!! Form::open(['route' => 'lrdetail.create', 'method'=>'get','class'=>'d-inline-block dform']) !!}
+
+                            <input class="form-control form-control-sm" placeholder="Add Lr detail" name="motorid" type="hidden" value="{{$motordetail->id}}">
+
+                    <button type="submit" class="btn  btn-success btn-sm m-1"  href="">
+                        Add Lr Details
+                    </button>
+
+                    {!! Form::close() !!}
                                             @can('destroy-motordetail')
                                             {!! Form::open(['route' => ['motordetail.destroy', $motordetail],'method' => 'delete',  'class'=>'d-inline-block dform']) !!}
                                             @endcan

@@ -1,9 +1,10 @@
 input[type="text"]:focus, textarea:focus,select:focus {
 
-  background-color : #ffff00;
+  background-color : #12a9b6;
+  border : 2px solid #ffff00 !important;
 
 }
-input[type="text"], textarea,select {
+input[type="text"], textarea,select,.select2 {
 
   border : 1px solid #000 !important;
 

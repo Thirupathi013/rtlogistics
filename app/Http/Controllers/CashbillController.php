@@ -11,6 +11,8 @@ use App\Models\Driverdetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use TCPDF;
+
 
 class CashbillController extends Controller
 {
@@ -179,7 +181,7 @@ class CashbillController extends Controller
 
 
 
-        var_dump($seletctedlrs);
+        // var_dump($seletctedlrs);
 
 
         return view('cashbill.edit', compact('title', 'cashbill','lrdetails','partydetails','driverdetails','print_types','partypaymenttype'));
@@ -213,5 +215,35 @@ class CashbillController extends Controller
         $cashbill->delete();
         flash('Cashbill deleted successfully!')->info();
         return back();
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function generatePDF(Cashbill $cashbill)
+    {
+
+        $data = [
+            'title' => 'Sample PDF',
+            'content' => 'This is the content of the PDF file.',
+
+        ];
+
+        // Render Blade view to get HTML content
+        return $html = view('cashbill.pdf_template', compact( 'data','lrdetails','partydetails','driverdetails','print_types','partypaymenttype'))->render();
+
+        // echo $html;
+        // die();
+        $pdf = new TCPDF();
+        // $pdf->SetHeaderData('', 0, 'Sample PDF', '');
+        $pdf->AddPage();
+
+        // Use the HTML content in the PDF
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        $pdf->Output('sample.pdf', 'D');
     }
 }

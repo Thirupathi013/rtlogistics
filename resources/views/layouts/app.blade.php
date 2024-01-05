@@ -136,7 +136,7 @@
       // For select 2
       //***********************************//
       $(".select2").select2();
-        $('body').on('keydown', 'input, select', function(e) {
+       /*  $('body').on('keydown', 'input, select', function(e) {
             if (e.which === 13) {
                 var self = $(this), form = self.parents('form:eq(0)'), focusable, next;
                 focusable = form.find('input').filter(':visible');
@@ -146,7 +146,60 @@
                 }
                 return false;
             }
-            });
+            }); */
+          /*   $('body').on('change', 'select', function (event) {
+
+
+
+        var $allInputs = $('input,select')
+        var $this = $(event.target);
+        var index = $allInputs.index($this);
+        if (index < $allInputs.length - 1) {
+            alert('hi')
+            $allInputs[index+1].focus()
+        }
+
+}); */
+/*
+            $('body').on('keydown', 'input', function (event) {
+    if (event.which == 13) {
+        var $allInputs = $('input,select')
+        var $this = $(event.target);
+        var index = $allInputs.index($this);
+        if (index < $allInputs.length - 1) {
+            event.preventDefault();
+            $allInputs[index+1].focus()
+        }
+    }
+}); */
+
+// register jQuery extension
+$.extend($.expr[':'], {
+    focusable: function (el, index, selector) {
+        return $(el).is('button, :input, [tabindex]');
+    }
+});
+
+$(document).on('keypress', 'input,select', function (e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        // Get all focusable elements on the page
+        var $canfocus = $(':focusable');
+        var index = $canfocus.index(document.activeElement) + 1;
+        if (index >= $canfocus.length) index = 0;
+        $canfocus.eq(index).focus();
+    }
+});
+//$(document).keydown(function(e) {
+  //   if (e.keyCode == 8) {
+    //    e.preventDefault();
+        // Get all focusable elements on the page
+      //  var $canfocus = $(':focusable');
+        //var index = $canfocus.index(document.activeElement) - 1;
+       // if (index >= $canfocus.length) index = 0;
+       // $canfocus.eq(index).focus();
+    //}
+//});
     </script>
 
     @stack('scripts')

@@ -82,7 +82,12 @@ class MotordetailController extends Controller
         $motordetail['created_by'] =Auth::id();
         $motordetail['report_date'] = Carbon::createFromFormat('d/m/Y', $request->report_date)->format('Y-m-d');
         $motordetail['arrival_date'] = Carbon::createFromFormat('d/m/Y', $request->arrival_date)->format('Y-m-d');
-        Motordetail::create($motordetail);
+        var_dump($motordetail);
+        die();
+        $id = Motordetail::create($motordetail)->id;
+
+
+    return redirect('lrdetail/create/'.$id);
         flash('Motordetail created successfully!')->success();
         return redirect()->route('motordetail.index');
     }

@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
     Route::get('cashbill/fetchlrdata', 'CashbillController@fetchlrdata');
     Route::get('cashbill/updatelrdata', 'CashbillController@updatelrdata');
+    Route::get('cashbill/generatepdf/{cashbill}', 'CashbillController@generatePDF')->name('cashbill.generatepdf');
 
 
     Route::resource('party', 'PartyController');
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::resource('marketingexecutive', 'MarketingexecutiveController');
     Route::resource('lrdetail', 'LrdetailController');
     Route::resource('cashbill', 'CashbillController');
+
 
 
     Route::get('/activity-log', 'SettingController@activity')->name('activity-log.index');

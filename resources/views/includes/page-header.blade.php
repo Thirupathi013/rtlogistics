@@ -35,6 +35,10 @@
                  @stack('pg_btn')
               </div>
               <div class="col-lg-12 col-12">
+                @if(session('message'))
+
+                        <div class="alert alert-success mt-4">{{ session('message') }}</div>
+                    @endif
                     @include('flash::message')
                     @if ($errors->any())
                     @foreach ($errors->all() as $error)
